@@ -12,7 +12,7 @@ export default function Home() {
     },
     {
       emoji: '🔫',
-      title: 'Bullet Point Generator',
+      title: 'Product information Generator',
       tooltip: 'Generate XML for preorder',
       link: '/Bullet'
     }

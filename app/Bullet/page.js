@@ -68,12 +68,12 @@ function Bullet() {
 
          // Combina tutti i record XML
          const finalXml = `
-             <product product-id=${productID}>
+             <product product-id="${productID}">
          ${xml}
          <custom-attributes>
          ${xmlBullet}
           ${xmlComposition}
-         </custom attributes>
+         </custom-attributes>
          </product>`;
           xmlRecords.push(finalXml);
         }
@@ -102,7 +102,7 @@ function Bullet() {
     </header>
     <div className='flex flex-col w-[100vw] h-[calc(100vh-90px)] justify-center items-center'>
       <span className='emojis'>🔫</span>
-      <h2>Bullet Generator</h2>
+      <h2>Product information Generator</h2>
       <p>Use this tool to generate bullet,descrition,composition, XML file to be imported on business manager.<br />
         Click <span className='download-underline' onClick={() => downloadTemplate('templateBullet')} >here</span> to download the template </p>
     <input type="file" id="select-file" className="select-file" accept=".xlsx" onChange={handleFileChange} style={{ display: 'none' }} />
