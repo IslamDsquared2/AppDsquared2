@@ -2,26 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ text-align: center;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+button {
+  /* Reset all styles */
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.select-file-label {
+  align-items: center;
+  border: 2px solid;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: cubic-bezier(.3,.46,.45,.94) .2s;
+  transition-property: background-color,border-color,color,box-shadow;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: top;
+  background-color: #fafc52;
+  border-color: transparent;
+  color: #000;
+  border-radius: 0;
+  box-shadow: 0 0 10px transparent;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  padding: 0 20px;
+  min-width: 200px;
+  cursor: pointer;
+}
+.preorder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: calc(100vh - 90px);
+  width: 100vw;
+  
+}
+.space{
+  margin-top: 20px;
+}
+.download-underline{
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+.downloaded{
+  background-color: #2ecc71;
+  color: white;
+  cursor: pointer;
+}
+.upload-und{
+  color:black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+h2{
+  margin: 0;
+}
+.emojis{
+  font-size: 40px;
 }
