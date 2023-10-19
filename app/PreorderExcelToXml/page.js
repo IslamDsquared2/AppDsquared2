@@ -7,12 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from '@/components/Header';
 import { downloadTemplate } from '../Utils/DownloadTemplate';
 import {DownloadFile} from '../Utils/DownloadFile';
+import { UploadFiles } from '../Utils/UploadFiles';
 
 function ExcelToXmlConverter() {
   const [xmlData, setXmlData] = useState(null);
   const fileInputRef = useRef(null);
-
-
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -20,8 +19,6 @@ function ExcelToXmlConverter() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        console.log(e.target.result)
-        console.log(reader)
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: 'array' });
 
@@ -37,6 +34,8 @@ function ExcelToXmlConverter() {
         let row = startRow;
         while (worksheet['D' + row]) {
           const productID = worksheet['A' + row]?.v || '';
+          const size = worksheet['B' + row]?.v || '';
+
           const allocation = 0;
           const allocationTimestamp = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
           const perpetual = false;
@@ -55,7 +54,7 @@ function ExcelToXmlConverter() {
 
           // Genera il documento XML per questa riga
           const xml = `
-            <record product-id="${productID}">
+            <record product-id="${productID}${size} ">
               <allocation>${allocation}</allocation>
               <allocation-timestamp>${allocationTimestamp}</allocation-timestamp>
               <perpetual>${perpetual}</perpetual>
@@ -122,10 +121,13 @@ function ExcelToXmlConverter() {
       {xmlData && (
         <div>
           <div>
-            <button className='select-file-label downloaded' onClick={() => DownloadFile(xmlData,'PreorderXml-',true)}>
+            <button className='select-file-label downloaded m-2' onClick={() => DownloadFile(xmlData,'PreorderXml-',true)}>
               <label className='cursor-pointer'  >DOWNLOAD FILE </label>
               <ToastContainer />
             </button>
+            <button className='select-file-label downloaded m-2' onClick={() => UploadFiles('uploadPreorder',xmlData)}>
+            <label className='cursor-pointer'  > CARICA WEBDAV </label>
+          </button>
             <p><a className="upload-und" href="/">Upload a new file</a></p>
           </div>
         </div>

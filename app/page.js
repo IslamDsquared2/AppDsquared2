@@ -1,3 +1,4 @@
+"use client"
 import Cards from '@/components/Cards';
 import Header from '@/components/Header'
 
@@ -15,6 +16,12 @@ export default function Home() {
       title: 'Product information Generator',
       tooltip: 'Generate XML for preorder',
       link: '/Bullet'
+    },
+    {
+      emoji: '✍🏽',
+      title: 'Recommendation XML Generator',
+      tooltip: 'Generate XML for recommendation',
+      link: '/Recommendation'
     }
  
   ];
