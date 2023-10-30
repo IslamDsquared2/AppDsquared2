@@ -6,40 +6,11 @@ import Header from '@/components/Header'
 import { DownloadFile } from '../Utils/DownloadFile'
 import { ToastContainer, toast } from 'react-toastify';
 import { UploadFiles } from '../Utils/UploadFiles';
-import axios from 'axios';
 
 
 function Bullet() {
   const [xmlData, setXmlData] = useState(null);
   const fileInputRef = useRef(null);
-
-  // useEffect(() => {
-  //   const apiUrl = 'https://localhost:3001/launchjob'; // Assicurati di usare l'URL corretto per il tuo backend
-
-  //   // Crea un oggetto di configurazione per la richiesta con le informazioni di autenticazione
-  //   const config = {
-  //     method: 'get',
-  //     url: apiUrl,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: 'Basic ' + btoa('islam.eddassouli@dsquared2.com:2cZ,KNpr6s}!FQJoka.4$j7k/lbQ#RHit6YI=8Mo'),
-  //       // Aggiungi qui altre intestazioni se necessario
-  //     },
-  //   };
-
-  //   // Esegui la richiesta utilizzando Axios
-  //   axios(config)
-  //     .then(response => {
-  //       // Gestisci la risposta qui
-  //       console.log('Risposta:', response);
-  //     })
-  //     .catch(error => {
-  //       // Gestisci gli errori qui
-  //       console.error('Errore:', error);
-  //     });
-  // }, []);
-
-
 function handleFileChange(e) {
   const file = e.target.files[0];
   if (file) {

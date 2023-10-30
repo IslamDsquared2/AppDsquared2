@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export async function UploadFiles(url, xmlData) {
+    console.log(process.env.NEXT_PUBLIC_API_URL)
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${url}`, {
         method: "POST",
         body: JSON.stringify({ xmlData }),

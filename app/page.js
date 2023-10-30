@@ -22,7 +22,13 @@ export default function Home() {
       title: 'Recommendation XML Generator',
       tooltip: 'Generate XML for recommendation',
       link: '/Recommendation'
-    }
+    },
+    {
+      emoji: '📌',
+      title: 'Categorisation XML Generator',
+      tooltip: 'Generate XML for categorisation',
+      link: '/Categorisation'
+   }
  
   ];
   return (

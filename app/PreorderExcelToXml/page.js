@@ -37,7 +37,7 @@ function ExcelToXmlConverter() {
           const size = worksheet['B' + row]?.v || '';
 
           const allocation = 0;
-          const allocationTimestamp = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+          const allocationTimestamp = new Date().toISOString();
           const perpetual = false;
           const preorderBackorderHandling = 'preorder';
           const dateStr = worksheet['D' + row]?.w; // Assumi che il formato sia "YYYY-MM-DD"
