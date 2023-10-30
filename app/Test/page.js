@@ -24,7 +24,7 @@ const TokenFetcher = () => {
 
     const handleButtonClick = async () => {
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/getJob`);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/getJob`);
             setToken(response.data.accessToken);
         } catch (err) {
             setError(err.message);
@@ -45,3 +45,4 @@ const TokenFetcher = () => {
 }
 
 export default TokenFetcher;
+
