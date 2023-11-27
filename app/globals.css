@@ -69,6 +69,34 @@ button {
   min-width: 200px;
   cursor: pointer;
 }
+.select-file-label-disabled {
+  align-items: center;
+  border: 2px solid;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: cubic-bezier(.3,.46,.45,.94) .2s;
+  transition-property: background-color,border-color,color,box-shadow;
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: top;
+  background-color: #c2c2c2;
+  border-color: transparent;
+  color: white;
+  border-radius: 0;
+  box-shadow: 0 0 10px transparent;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  padding: 0 20px;
+  min-width: 200px;
+  pointer-events: none;
+}
 .preorder{
   display: flex;
   justify-content: center;

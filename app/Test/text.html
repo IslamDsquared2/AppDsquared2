@@ -1,0 +1,174 @@
+<div class="freeshipping-navbar">
+    <div class="countdown-line">
+        <span id="freeship"></span>
+        <div id="count">
+            <!-- <div class="counter"><span id="countdown-day"></span> <span id="countdown-day-title"></span></div> -->
+
+            <div class="counter"><span id="countdown-hours"></span> <span id="countdown-hours-title"></span></div>
+
+            <div class="counter"><span id="countdown-minute"></span> <span id="countdown-minute-title"></span></div>
+
+            <div class="counter"><span id="countdown-seconds"></span> <span id="countdown-seconds-title"></span></div>
+        </div>
+    </div>
+    <div class="sales-hour">
+        <span class="sales"></span>
+        <span class="category-mobile">
+            <a href="$url('Search-Show', 'cgid', 'singlesday23-men')$" class="b-link_phone" id="countdown-cta_men"> MEN
+            </a> -
+            <a href="$url('Search-Show', 'cgid', 'singlesday23-women')$" class="b-link_phone" id="countdown-cta_women">
+                WOMEN </a> -
+            <a href="$url('Search-Show', 'cgid', 'singlesday23-kids')$" class="b-link_phone" id="countdown-cta_kids">
+                KIDS </a>
+        </span>
+    </div>
+</div>
+
+<style>
+    .freeshipping-navbar {
+        padding: 10px;
+        text-transform: uppercase;
+
+        @media (max-width:480px) {
+            display: flex;
+            flex-flow: column;
+            font-size: 10.5px;
+        }
+
+    }
+
+    .countdown-line {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        @media (max-width:337px) {
+            flex-flow: column;
+        }
+    }
+
+    #count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 3px;
+    }
+
+    .sales-hour {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row;
+    }
+
+    #countdown-cta_men {
+        margin: 0px 3px;
+    }
+</style>
+
+<script>
+    const targetDateUTC = new Date('2023-11-15T23:59:59Z');
+    const oggettiMultilingua = [
+        {
+            lang: "it",
+            title: "Blackfriday Pass esclusivo termina tra:",
+            cta_men: " UOMO",
+            cta_women: "DONNA",
+            cta_kids: "BAMBINO",
+            sales: "Fino al 50% di sconto: ",
+        },
+        {
+            lang: "en",
+            title: "Black Friday exclusive pass ends in:",
+            cta_men: " MEN",
+            cta_women: "WOMEN",
+            cta_kids: "KIDS",
+            sales: "Up To 50% off: ",
+        },
+        {
+            lang: "es",
+            title: "Pase exclusivo Black Friday termina en:",
+            cta_men: " HOMBRE",
+            cta_women: "MUJER",
+            cta_kids: "NIÑO",
+            sales: "Hasta un 50% de descuento: ",
+        },
+        {
+            lang: "de",
+            title: "Exklusiver Black Friday-Pass endet in: ",
+            cta_men: " HERREN",
+            cta_women: "DAMEN",
+            cta_kids: "KINDER",
+            sales: "Bis zu 50% Rabatt: ",
+        },
+        {
+            lang: "fr",
+            title: "Le pass exclusif Black Friday se termine : ",
+            cta_men: " HOMME",
+            cta_women: "FEMME",
+            cta_kids: "ENFANT",
+            sales: "Jusqu'à 50% de réduction: ",
+        },
+        {
+            lang: "ja",
+            title: "ブラックフライデー限定パスの終了まで： ",
+            cta_men: " メンズ",
+            cta_women: "レディース",
+            cta_kids: "キッズ",
+            sales: "最大50％オフ: ",
+        },
+        {
+            lang: "zh",
+            title: "Black Friday exclusive pass ends in:",
+            cta_men: " MEN",
+            cta_women: "WOMEN",
+            cta_kids: "KIDS",
+            sales: "Up To 50% off: ",
+        }
+    ];
+    function updateCountdown() {
+        const nowUTC = new Date();
+        const timeRemainingUTC = targetDateUTC - nowUTC;
+
+        if (timeRemainingUTC > 0) {
+            const days = Math.floor(timeRemainingUTC / (1000 * 60 * 60 * 24));
+            const hours = (Math.floor((timeRemainingUTC % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))) + (days * 24);
+            const minutes = Math.floor((timeRemainingUTC % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemainingUTC % (1000 * 60)) / 1000);
+
+            // if (days > 0) {
+            //     document.getElementById('countdown-day').innerHTML = days;
+            //     document.getElementById('countdown-day-title').innerHTML = 'D';
+            // }
+            document.getElementById('countdown-hours').innerHTML = hours;
+            document.getElementById('countdown-hours-title').innerHTML = 'H';
+            document.getElementById('countdown-minute').innerHTML = minutes;
+            document.getElementById('countdown-minute-title').innerHTML = 'M';
+            document.getElementById('countdown-seconds').innerHTML = seconds;
+            document.getElementById('countdown-seconds-title').innerHTML = 'S';
+        } else {
+            document.getElementById('countdown').innerHTML = 'The day has arrived!';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setInterval(updateCountdown, 1000);
+    });
+
+    const language = document.documentElement.lang;
+    oggettiMultilingua.forEach(translations => {
+        if (translations.lang === language) {
+            document.getElementById('freeship').innerHTML = translations.title;
+            document.querySelector('#countdown-cta_men').innerHTML = translations.cta_men;
+            document.querySelector('#countdown-cta_women').innerHTML = translations.cta_women;
+            document.querySelector('#countdown-cta_kids').innerHTML = translations.cta_kids;
+            document.querySelector('.sales').innerHTML = translations.sales;
+        }
+    })
+</script>
