@@ -1,5 +1,4 @@
-"use client"; 
-
+"use client";
 import React, { useState, useRef,useContext } from 'react';
 import * as XLSX from 'xlsx';
 import { ToastContainer, toast } from 'react-toastify';
@@ -58,8 +57,7 @@ function ExcelToXmlConverter() {
           const turnover = 0;
 
           // Genera il documento XML per questa riga
-          const xml = `
-            <record product-id="${productID}${size} ">
+          const xml = `<record product-id="${productID}${size}">
               <allocation>${allocation}</allocation>
               <allocation-timestamp>${allocationTimestamp}</allocation-timestamp>
               <perpetual>${perpetual}</perpetual>
@@ -79,11 +77,10 @@ function ExcelToXmlConverter() {
         }
 
         // Combina tutti i record XML
-        const finalXml = `
-        <?xml version="1.0" encoding="UTF-8"?>
+        const finalXml = `<?xml version="1.0" encoding="UTF-8"?>
         <inventory xmlns="http://www.demandware.com/xml/impex/inventory/2007-05-31">
         <inventory-list>
-        <header list-id="dsquared2-inventory">
+        <header list-id="dsquared2-inventory-aggregated">
         <default-instock>false</default-instock>
         <use-bundle-inventory-only>false</use-bundle-inventory-only>
         <on-order>true</on-order>
