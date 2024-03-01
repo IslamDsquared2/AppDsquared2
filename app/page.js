@@ -3,10 +3,12 @@ import Header from '@/components/Header';
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
+
+
 export default async function Home() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-
+  
   const dsquared2Apps = [
     {
       emoji: '🧇',
@@ -56,7 +58,7 @@ export default async function Home() {
         <main className=' flex flex-row flex-wrap justify-center max-w-[90vw] m-auto'>
           {user ? (
             dsquared2Apps.map((app, index) => (
-              <Cards key={index} emoji={app.emoji} title={app.title} tooltip={app.tooltip} link={app.link} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 " />
+              <Cards key={index} emoji={app.emoji} title={app.title} tooltip={app.tooltip} link={app.link} isDsquared2={user} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 " />
             ))
           ) : (
             <div className="flex justify-center items-center w-100 h-[90vh] flex-col gap-y-5">
