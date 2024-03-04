@@ -48,13 +48,13 @@ export default async function Home() {
     },
     {
       emoji: '💰',
-      title: 'Ecommerce Table',
+      title: 'Ecommerce Data & Table',
       tooltip: 'We can view a several information for our eCommerce',
       link: '/EcomTab'
     },
     {
       emoji: '🤡',
-      title: 'Import PIM Data',
+      title: 'Import PIM Data From Akeneo',
       tooltip: 'Launch the job for the PIM Update',
       link: '/PimData'
     },
