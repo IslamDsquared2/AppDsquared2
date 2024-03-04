@@ -9,6 +9,7 @@ import { downloadTemplate } from '../Utils/DownloadTemplate';
 import { DownloadFile } from '../Utils/DownloadFile';
 import { LoadingContext } from '../Context/LoadingContext';
 import useDragAndDrop from '../Utils/useDragAndDrop';
+import { AvviaJob } from '../Utils/AvviaJob';
 
 
 function ExcelToXmlConverter() {
@@ -97,12 +98,13 @@ function ExcelToXmlConverter() {
       reader.readAsArrayBuffer(file);
     }
     //react notify notifica success
+    if (fileInputRef.current) {
+      toast.success('File uploaded successfully');
+      fileInputRef.current.style.display = 'none';
+    }
 
   };
-  if (fileInputRef.current) {
-    toast.success('File uploaded successfully');
-    fileInputRef.current.style.display = 'none';
-  }
+ 
 
   const {
     isDragActive,
@@ -144,11 +146,15 @@ function ExcelToXmlConverter() {
               <div>
                 <button className='select-file-label downloaded m-2' onClick={() => DownloadFile(xmlData, 'PreorderXml-', true)}>
                   <label className='cursor-pointer'  >DOWNLOAD FILE </label>
-                  <ToastContainer />
                 </button>
                 <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadPreorder', xmlData)}>
                   <label className='cursor-pointer'  > CARICA WEBDAV </label>
                 </button>
+                <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => AvviaJob('D2 - Preorder Import')}>
+                  <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
+                </button>
+                <ToastContainer />
+                
                 {isLoader && (
                   <div role="status" className="flex justify-center items-center">
                     <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-[#2ecc71]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

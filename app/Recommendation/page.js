@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useFileUpload } from '../Utils/UploadFiles';
 import { LoadingContext } from '../Context/LoadingContext';
 import useDragAndDrop from '../Utils/useDragAndDrop';
+import { AvviaJob } from '../Utils/AvviaJob';
 
 
 
@@ -97,6 +98,9 @@ function Recommendation() {
           </button>
           <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadRecommendation',xmlData)}>
             <label className='cursor-pointer'  > CARICA WEBDAV </label>
+          </button>
+          <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => AvviaJob('D2 - Catalog Import')}>
+                  <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
           </button>
           {isLoader && (
                             <div role="status" className="flex justify-center items-center">

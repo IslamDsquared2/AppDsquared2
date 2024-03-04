@@ -8,12 +8,13 @@ import { DownloadFile } from '../Utils/DownloadFile'
 import { ToastContainer, toast } from 'react-toastify';
 import { LoadingContext } from '../Context/LoadingContext';
 import useDragAndDrop from '../Utils/useDragAndDrop';
+import { AvviaJob } from '../Utils/AvviaJob';
 
 
 
 function Bullet() {
   const [xmlData, setXmlData] = useState(null);
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef(null); 
   const { isLoader, setIsLoader } = useContext(LoadingContext);
   const uploadFiles = useFileUpload();
 
@@ -141,6 +142,10 @@ return (
           <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadBullet',xmlData)}>
             <label className='cursor-pointer'  > CARICA WEBDAV </label>
           </button>
+          <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => AvviaJob('D2 - Preorder Import')}>
+                  <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
+          </button>
+          <ToastContainer />
           {isLoader && (
                             <div role="status" className="flex justify-center items-center">
                                 <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-[#2ecc71]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

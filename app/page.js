@@ -46,6 +46,18 @@ export default async function Home() {
       tooltip: 'Generate XML for Vimeo video version V1 - V2',
       link: '/VideoVimeo'
     },
+    {
+      emoji: '💰',
+      title: 'Ecommerce Table',
+      tooltip: 'We can view a several information for our eCommerce',
+      link: '/EcomTab'
+    },
+    {
+      emoji: '🤡',
+      title: 'Import PIM Data',
+      tooltip: 'Launch the job for the PIM Update',
+      link: '/PimData'
+    },
 
 
   ];

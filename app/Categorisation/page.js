@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { LoadingContext } from '../Context/LoadingContext';
 import * as XLSX from 'xlsx';
 import useDragAndDrop from '../Utils/useDragAndDrop';
+import { AvviaJob } from '../Utils/AvviaJob';
 
 
 function Categorisation() {
@@ -172,6 +173,9 @@ function Categorisation() {
                             </button>
                             <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadCategorisation', xmlData)}>
                                 <label className={`cursor-pointer `}  > CARICA WEBDAV </label>
+                            </button>
+                            <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => AvviaJob('D2 - Catalog Import')}>
+                                <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
                             </button>
 
                             {isLoader && (

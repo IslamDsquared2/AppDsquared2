@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
-  console.log("here")
   const { pathname } = request.nextUrl;
 
   // Elenco delle pagine pubbliche
