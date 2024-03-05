@@ -23,7 +23,7 @@ function Header({ isDsquared2 }) {
                     <div className="flex-1 flex justify-end">
                         <div className="flex items-center space-x-2 mr-4">
                             <span className="text-sm text-white ">Hello , {isDsquared2.family_name} {isDsquared2.given_name}</span>
-                            <img src={isDsquared2?.picture} alt="Immagine Utente" width={40} height={40} className="rounded-full" />
+                         {isDsquared2?.picture ? <img src={isDsquared2?.picture} alt="Immagine Utente" width={40} height={40} className="rounded-full" /> : <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="Immagine Utente" width={40} height={40} className="rounded-full" /> }
                         </div>
                         <LogoutLink> <button className="text-sm text-white bg-red-600 p-2 rounded-md me-4">Logout</button> </LogoutLink>
                     </div>
