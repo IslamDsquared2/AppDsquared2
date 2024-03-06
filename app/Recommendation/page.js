@@ -78,12 +78,12 @@ function Recommendation() {
   return (
     <>
       <div {...dragHandlers}
-        className="w-full h-full"
-      >
+        className={`w-full h-full ${isDragActive ? 'drag-over' : ''}`}
+        >
         <header>
           <Header />
         </header>
-        <div className='flex flex-col w-[100vw] h-[calc(100vh-90px)] justify-center items-center'>
+        <div className={`flex flex-col w-[100vw] h-[calc(100vh-90px)] justify-center items-center ${isDragActive ? 'drag-over' : ''}`}>
           <span className='emojis'>✍🏽</span>
           <h2>Recommendation XML Generator</h2>
           <p>Use this tool to generate recommendation,descrition,composition, XML file to be imported on business manager.<br />

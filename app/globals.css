@@ -130,3 +130,6 @@ h2{
 .emojis{
   font-size: 40px;
 }
+.drag-over {
+  background-color: rgba(186, 236, 207, 0.5);
+}

@@ -124,12 +124,12 @@ function ExcelToXmlConverter() {
   return (
     <>
       <div {...dragHandlers}
-        className="w-full h-full"
+        className={`w-full h-full ${isDragActive ? 'drag-over' : ''}`}
       >
         <header>
           <Header />
         </header>
-        <div className='preorder'>
+        <div className={`preorder ${isDragActive ? 'drag-over' : ''}`}>
           <span className='emojis'>🧇</span>
           <h2>Preorder XML Generator</h2>
           <p>Use this tool to generate preorder XML file to be imported on business manager.<br />
@@ -150,14 +150,16 @@ function ExcelToXmlConverter() {
                 <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadPreorder', xmlData)}>
                   <label className='cursor-pointer'  > CARICA WEBDAV </label>
                 </button>
-                <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() =>{setIsLoader(true); AvviaJob('D2 - Preorder Import').then(() => {
-                  toast.success('D2 - Preorder Import completed successfully');
-                  setIsLoader(false);
-                })
-                  .catch((error) => {
-                    toast.error(`Error during D2 - Preorder Import: ${error.message}`);
+                <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => {
+                  setIsLoader(true); AvviaJob('D2 - Preorder Import').then(() => {
+                    toast.success('D2 - Preorder Import completed successfully');
                     setIsLoader(false);
-                  })}}>
+                  })
+                    .catch((error) => {
+                      toast.error(`Error during D2 - Preorder Import: ${error.message}`);
+                      setIsLoader(false);
+                    })
+                }}>
                   <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
                 </button>
                 <ToastContainer />

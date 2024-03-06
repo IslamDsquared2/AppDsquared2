@@ -14,11 +14,13 @@ const useDragAndDrop = (handleFileChange) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragActive(false);
+
     }, []);
 
     const handleDragOver = useCallback((e) => {
         e.preventDefault();
         e.stopPropagation();
+        setIsDragActive(true);
     }, []);
 
     const handleDrop = useCallback((e) => {
@@ -31,7 +33,7 @@ const useDragAndDrop = (handleFileChange) => {
     }, [handleFileChange]);
 
     return {
-        isDragActive,
+        isDragActive: isDragActive,
         handleDragEnter,
         handleDragLeave,
         handleDragOver,
