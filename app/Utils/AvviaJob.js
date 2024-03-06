@@ -1,7 +1,3 @@
-// utils.js
-import { toast } from 'react-toastify';
-import { LoadingContext } from '../Context/LoadingContext';
-
 
 /**
  * Funzione per avviare un job specifico tramite una richiesta HTTP POST.
@@ -18,15 +14,12 @@ export const AvviaJob = (jobID) => {
     })
     .then(response => {
         if (!response.ok) {
-            toast.error('Network response was not ok');
             throw new Error('Network response was not ok');
         }
-        toast.success('Job launched successfully');
         return response.json();
       
     })
     .catch(error => {
-        toast.error('Errore: ' + error.message);
         console.error('Errore:', error);
         throw error; // Allows further error handling
     });

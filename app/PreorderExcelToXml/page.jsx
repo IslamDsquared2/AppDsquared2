@@ -104,7 +104,7 @@ function ExcelToXmlConverter() {
     }
 
   };
- 
+
 
   const {
     isDragActive,
@@ -150,11 +150,18 @@ function ExcelToXmlConverter() {
                 <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => uploadFiles('uploadPreorder', xmlData)}>
                   <label className='cursor-pointer'  > CARICA WEBDAV </label>
                 </button>
-                <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() => AvviaJob('D2 - Preorder Import').then(() => toast.success('D2 - Catalog Import completed successfully')).catch((error) => toast.error(`Error during D2 - Catalog Import: ${error.message}`))}>
+                <button className={` m-2 ${isLoader ? 'select-file-label-disabled' : 'select-file-label downloaded'}  `} onClick={() =>{setIsLoader(true); AvviaJob('D2 - Preorder Import').then(() => {
+                  toast.success('D2 - Preorder Import completed successfully');
+                  setIsLoader(false);
+                })
+                  .catch((error) => {
+                    toast.error(`Error during D2 - Preorder Import: ${error.message}`);
+                    setIsLoader(false);
+                  })}}>
                   <label className='cursor-pointer'  >AVVIA JOB IN STG</label>
                 </button>
                 <ToastContainer />
-                
+
                 {isLoader && (
                   <div role="status" className="flex justify-center items-center">
                     <svg aria-hidden="true" className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-[#2ecc71]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
