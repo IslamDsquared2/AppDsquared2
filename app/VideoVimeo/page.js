@@ -52,8 +52,8 @@ function VideoVimeo() {
             xmlRecords.push(`
               <product product-id="${currentProductId}">
                 <custom-attributes>
-                  ${currentV1Link ? `<custom-attribute attribute-id="tileVideoUrl" xml:lang="x-default">${currentV1Link}</custom-attribute>` : ''}
-                  ${currentV2Link ? `<custom-attribute attribute-id="videoUrl" xml:lang="x-default">${currentV2Link}</custom-attribute>` : ''}
+                  ${currentV1Link ? `<custom-attribute attribute-id="tileVideoUrl" xml:lang="x-default">https://player.vimeo.com/video/${currentV1Link}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
+                  ${currentV2Link ? `<custom-attribute attribute-id="videoUrl" xml:lang="x-default">https://player.vimeo.com/video/${currentV2Link}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
                 </custom-attributes>
               </product>
             `);
@@ -66,8 +66,7 @@ function VideoVimeo() {
           row++;
         }
 
-        const resultXML = `
-          <?xml version="1.0" encoding="UTF-8"?>
+        const resultXML = `<?xml version="1.0" encoding="UTF-8"?>
           <catalog xmlns="http://www.demandware.com/xml/impex/catalog/2006-10-31" catalog-id="dsquared2-master-catalog">
             ${xmlRecords.join('')}
           </catalog>
