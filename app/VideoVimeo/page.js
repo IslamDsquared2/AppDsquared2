@@ -58,6 +58,7 @@ function VideoVimeo() {
   
         // Genera l'XML
         const xmlRecords = Object.entries(productData).map(([productId, { v1, v2 }]) => {
+          console.log(productId, v1, v2);
           // Verifica che V1 e V2 siano presenti e costruisci l'XML di conseguenza
           return `
             <product product-id="${productId}">
