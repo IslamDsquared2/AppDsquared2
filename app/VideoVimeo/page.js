@@ -108,7 +108,7 @@ function VideoVimeo() {
         <div className={`flex flex-col w-[100vw] h-[calc(100vh-90px)] justify-center items-center ${isDragActive ? 'drag-over' : ''}`}>
           <span className='emojis'>📹</span>
           <h2>Video Vimeo Generator</h2>
-          <p>Usa questo strumento per generare l'XML per i video in versione V1 e V2.<br />
+          <p>Usa questo strumento per generare l XML per i video in versione V1 e V2 <br />
             Clicca <span className='download-underline' onClick={() => downloadTemplate('templateVideoVimeo')} >qui</span> per scaricare il template. </p>
           <input type="file" id="select-file" className="select-file" accept=".xlsx" onChange={handleFileChange} style={{ display: 'none' }} />
           <label className='select-file-label cursor-pointer' htmlFor="select-file" ref={fileInputRef} >UPLOAD/DROP YOUR EXCEL FILE </label>
