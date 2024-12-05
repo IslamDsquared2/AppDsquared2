@@ -25,47 +25,50 @@ function VideoVimeo() {
         const workbook = XLSX.read(data, { type: 'array' });
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const startRow = 2; // Prima riga contenente dati, inizia da 2 se 1 è l'intestazione
-
+  
         // Crea un oggetto per memorizzare le associazioni
         const productData = {};
-
+  
         let row = startRow;
         while (worksheet['A' + row]) {
           const productId = worksheet['A' + row]?.v || '';
           const v1OrV2 = worksheet['B' + row]?.v || '';
           const link = worksheet['C' + row]?.v || '';
-
+  
           // Ignora righe vuote o incomplete
           if (!productId || !v1OrV2 || !link) {
             row++;
             continue;
           }
-
+  
           // Se il prodotto non esiste ancora, inizializzalo
           if (!productData[productId]) {
             productData[productId] = { v1: null, v2: null };
           }
-
+  
           // Aggiungi il link al prodotto corretto
           if (v1OrV2.endsWith('V1')) {
-            productData[productId].v1 = link;
+            productData[productId].v1 = link;  // Assegna V1 al tileVideoUrl
           } else if (v1OrV2.endsWith('V2')) {
-            productData[productId].v2 = link;
+            productData[productId].v2 = link;  // Assegna V2 al videoUrl
           }
-
+  
           row++;
         }
-
+  
         // Genera l'XML
-        const xmlRecords = Object.entries(productData).map(([productId, { v1, v2 }]) => `
-          <product product-id="${productId}">
-            <custom-attributes>
-              ${v1 ? `<custom-attribute attribute-id="tileVideoUrl" xml:lang="x-default">https://player.vimeo.com/video/${v1}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
-              ${v2 ? `<custom-attribute attribute-id="videoUrl" xml:lang="x-default">https://player.vimeo.com/video/${v2}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
-            </custom-attributes>
-          </product>
-        `);
-
+        const xmlRecords = Object.entries(productData).map(([productId, { v1, v2 }]) => {
+          // Verifica che V1 e V2 siano presenti e costruisci l'XML di conseguenza
+          return `
+            <product product-id="${productId}">
+              <custom-attributes>
+                ${v1 ? `<custom-attribute attribute-id="tileVideoUrl" xml:lang="x-default">https://player.vimeo.com/video/${v1}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
+                ${v2 ? `<custom-attribute attribute-id="videoUrl" xml:lang="x-default">https://player.vimeo.com/video/${v2}?color=ffffff&amp;controls=0&amp;autoplay=1&amp;loop=1</custom-attribute>` : ''}
+              </custom-attributes>
+            </product>
+          `;
+        });
+  
         const resultXML = `<?xml version="1.0" encoding="UTF-8"?>
           <catalog xmlns="http://www.demandware.com/xml/impex/catalog/2006-10-31" catalog-id="dsquared2-master-catalog">
             ${xmlRecords.join('')}
@@ -74,14 +77,15 @@ function VideoVimeo() {
         setXmlData(resultXML);
         toast.success('File elaborato con successo!');
       };
-
+  
       reader.readAsArrayBuffer(file);
-
+  
       if (fileInputRef.current) {
         fileInputRef.current.style.display = 'none';
       }
     }
   }
+  
 
   const {
     isDragActive,
