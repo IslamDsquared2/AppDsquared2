@@ -31,9 +31,9 @@ function VideoVimeo() {
   
         let row = startRow;
         while (worksheet['A' + row]) {
-          const productId = worksheet['A' + row]?.v || '';
-          const v1OrV2 = worksheet['B' + row]?.v || '';
-          const link = worksheet['C' + row]?.v || '';
+          const productId = worksheet['A' + row]?.v?.toString().trim() || ''; // Rimuovi spazi e forza conversione a stringa
+          const v1OrV2 = worksheet['B' + row]?.v?.toString().trim() || ''; // Rimuovi spazi
+          const link = worksheet['C' + row]?.v?.toString().trim() || ''; 
   
           // Ignora righe vuote o incomplete
           if (!productId || !v1OrV2 || !link) {
