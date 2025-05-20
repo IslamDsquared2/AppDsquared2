@@ -17,6 +17,7 @@
     "davclient.js": "^0.1.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "jszip": "^3.10.1",
     "next": "^14.1.1-canary.78",
     "next-client-cookies": "^1.1.0",
     "postcss": "8.4.30",

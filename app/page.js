@@ -46,17 +46,29 @@ export default async function Home() {
       tooltip: 'Generate XML for Vimeo video version V1 - V2',
       link: '/VideoVimeo'
     },
-    {
-      emoji: '💰',
-      title: 'Ecommerce Data & Table',
-      tooltip: 'We can view a several information for our eCommerce',
-      link: '/EcomTab'
-    },
+    // {
+    //   emoji: '💰',
+    //   title: 'Ecommerce Data & Table',
+    //   tooltip: 'We can view a several information for our eCommerce',
+    //   link: '/EcomTab'
+    // },
     {
       emoji: '🤡',
       title: 'Import PIM Data From Akeneo',
       tooltip: 'Launch the job for the PIM Update',
       link: '/PimData'
+    },
+    {
+      emoji: '🧹',
+      title: 'Clean special character from XLSX',
+      tooltip: 'Clean from special character',
+      link: '/CleanCharacter'
+    },
+    {
+      emoji: '➗',
+      title: 'Divide Bullet Point for Akeneo',
+      tooltip: 'Divide Bullet Point for Akeneo',
+      link: '/DividedBullet'
     },
 
 
